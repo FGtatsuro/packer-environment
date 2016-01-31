@@ -73,6 +73,12 @@ Vagrant.configure(2) do |config|
     pip install ansible
   SHELL
 
+  # Patch for https://github.com/mitchellh/vagrant/issues/6793
+  config.vm.provision 'shell' do |s|
+      s.inline = '[[ ! -f $1 ]] || grep -F -q "$2" $1 || sed -i "/__main__/a \\    $2" $1'
+      s.args = ['/usr/local/bin/ansible-galaxy', "if sys.argv == ['/usr/local/bin/ansible-galaxy', '--help']: sys.argv.insert(1, 'info')"]
+  end 
+
   config.vm.provision 'ansible_local' do |ansible|
     ansible.playbook = 'site.yml'
     ansible.verbose = true

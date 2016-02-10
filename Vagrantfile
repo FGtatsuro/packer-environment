@@ -79,7 +79,7 @@ Vagrant.configure(2) do |config|
       s.args = ['/usr/local/bin/ansible-galaxy', "if sys.argv == ['/usr/local/bin/ansible-galaxy', '--help']: sys.argv.insert(1, 'info')"]
   end 
 
-  config.vm.provision 'ansible_local' do |ansible|
+  config.vm.provision 'ansible' do |ansible|
     ansible.galaxy_role_file = 'requirements.yml'
     ansible.playbook = 'site.yml'
     ansible.verbose = true

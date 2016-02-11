@@ -1,1 +1,3 @@
+---
+- src: FGtatsuro.ansible
 - src: craneworks.packer

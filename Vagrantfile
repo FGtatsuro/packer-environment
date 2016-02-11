@@ -65,14 +65,6 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
 
-  # pip must be updated and latest ansible must be installed before ansible-playbook
-  config.vm.provision 'shell', inline: <<-SHELL
-    sed -i -e "s/httpredir.debian.org/ftp.jp.debian.org/g" /etc/apt/sources.list
-    aptitude update && aptitude install -y build-essential python-dev && aptitude clean
-    cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py    
-    pip install ansible
-  SHELL
-
   config.vm.provision 'ansible' do |ansible|
     ansible.galaxy_role_file = 'requirements.yml'
     ansible.playbook = 'site.yml'

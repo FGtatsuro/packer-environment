@@ -1,5 +1,5 @@
 - hosts: all
-  sudo: yes
+  become: yes
   roles:
     - { role: FGtatsuro.ansible }
     - { role: craneworks.packer, packer_path: /opt/packer/bin }

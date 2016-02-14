@@ -67,6 +67,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'ansible' do |ansible|
     ansible.galaxy_role_file = 'requirements.yml'
+    ansible.galaxy_command = "ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}".freeze
     ansible.playbook = 'site.yml'
     ansible.verbose = true
   end

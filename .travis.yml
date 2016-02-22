@@ -14,6 +14,8 @@ addons:
 
 install:
   - pip install ansible
+  # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.
+  - ansible-galaxy install thydel.vagrant
 
 before_script:
   - ansible-playbook tests/test.yml -i tests/inventory -l localhost --connection=local -vvvv

@@ -24,6 +24,3 @@ script:
 
 after_script:
   - vagrant destroy
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/

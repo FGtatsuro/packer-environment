@@ -2,4 +2,4 @@
 - hosts: all
   remote_user: root
   roles:
-    - { role: "thydel.vagrant", vagrant_baseurl: "https://releases.hashicorp.com/vagrant/1.8.1", vagrant_debfile: "vagrant_1.8.1_x86_64.deb" }
+    - { role: "thydel.vagrant", vagrant_baseurl: "https://releases.hashicorp.com/vagrant/1.8.1", vagrant_debfile: "vagrant_1.8.1_x86_64.deb", become: yes }
